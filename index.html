@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <!-- Site Properties -->
+  <title>Los Angeles Smart Contract</title>
+
+  <link rel="stylesheet" type="text/css" href="/css/components/reset.css">
+  <link rel="stylesheet" type="text/css" href="/css/components/site.css">
+
+  <link rel="stylesheet" type="text/css" href="/css/components/container.css">
+  <link rel="stylesheet" type="text/css" href="/css/components/grid.css">
+  <link rel="stylesheet" type="text/css" href="/css/components/header.css">
+  <link rel="stylesheet" type="text/css" href="/css/components/image.css">
+  <link rel="stylesheet" type="text/css" href="/css/components/menu.css">
+  <link rel="stylesheet" type="text/css" href="/css/components/button.css">
+
+  <link rel="stylesheet" type="text/css" href="/css/components/divider.css">
+  <link rel="stylesheet" type="text/css" href="/css/components/list.css">
+  <link rel="stylesheet" type="text/css" href="/css/components/segment.css">
+  <link rel="stylesheet" type="text/css" href="/css/components/dropdown.css">
+  <link rel="stylesheet" type="text/css" href="/css/components/icon.css">
+  <link rel="stylesheet" type="text/css" href="/css/components/transition.css">
+
+  <link rel="stylesheet" type="text/css" href="/css/lasmartcontract.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="/css/components/transition.js"></script>
+  <script src="/css/components/dropdown.js"></script>
+  <script src="/css/components/visibility.js"></script>
+  <script>
+  $(document)
+    .ready(function() {
+
+      // fix main menu to page on passing
+      $('.main.menu').visibility({
+        type: 'fixed'
+      });
+      $('.overlay').visibility({
+        type: 'fixed',
+        offset: 80
+      });
+
+      // lazy load images
+      $('.image').visibility({
+        type: 'image',
+        transition: 'vertical flip in',
+        duration: 500
+      });
+
+      // show dropdown on hover
+      $('.main.menu  .ui.dropdown').dropdown({
+        on: 'hover'
+      });
+    })
+  ;
+  </script>
+
+  <style type="text/css">
+
+  </style>
+
+</head>
+<body>
+
+  <div class="ui main text container">
+    <h1 class="ui header">Los Angeles Smart Contract</h1>
+    <p>A (new) community of smart contract engineers. <strong>Novices and experts welcome.</strong></p>
+  </div>
+
+
+  <div class="ui borderless main menu">
+    <div class="ui text container">
+      <div class="header item">
+        <img class="logo" height="40" width="40" src="/imgs/lasc.png">
+        <strong>LA Smart Contract</strong>
+      </div>
+      <a href="https://www.meetup.com/LA-Smart-Contract-Meetup/" class="item">Meetup</a>
+      <a href="http://lists.lasmartcontract.com/listinfo.cgi/lasmartcontract-lasmartcontract.com" class="item">Join Discussion</a>
+      <div class="item">Token count -  <span class="tokenCount">0</span></div>
+      <!--for later...<a href="#" class="ui right floated dropdown item">
+        Dropdown <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item">Link Item</div>
+          <div class="item">Link Item</div>
+          <div class="divider"></div>
+          <div class="header">Header Item</div>
+          <div class="item">
+            <i class="dropdown icon"></i>
+            Sub Menu
+            <div class="menu">
+              <div class="item">Link Item</div>
+              <div class="item">Link Item</div>
+            </div>
+          </div>
+          <div class="item">Link Item</div>
+        </div>
+      </a>-->
+    </div>
+  </div>
+
+  <div class="ui text container">
+    <div class="ui segment">
+      <h2>Our Next Meetup</h2>
+      <p>December 5, 2018 @ 7:00 pm</p>
+      <p><strong>Solidity 101 - Live, No-Slides Coding and Hacking Tutorial and Session</strong></p>
+      <p>You'll walk away with a solid understanding of the basics of developing smart contracts with Solidity on the Ethereum blockchain.</p>
+      <p>Let’s do a hands on session to build an Ethereum-based Solidity smart contract from the ground up—no prior blockchain or smart contract experience required! Should be a small group, so if anyone’s having trouble there’s a good chance we can solve it together.</p>
+      <p><a class="ui button primary" href="https://www.meetup.com/LA-Smart-Contract-Meetup/events/255758533/">RSVP on Meetup</a></p>
+    </div>
+
+    <h2>Recent Meetups</h2>
+    <img class="ui medium left floated image" data-src="/imgs/2018_11_10_usc.png">
+    <p>Well, we haven't <em>actually</em> had any meetups yet, but Michael Rice <strong>did</strong> give the same presentation on Solidity 101 at the Desert Code Camp in Arizona, the UC Irvine Blockathon, and recently at University of Southern California for the SoCal Code Camp.</p>
+    <p>So <em>most</em> of the bugs have been worked out. Hopefully :-)</p>
+    <p>Come join us at the next one!</p>
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+
+    <div class="ui segment">
+      <p>Your attendance token count is <span class="tokenCount">0</span>. Attend more meetups to earn more tokens!  </p>
+    </div>
+
+    <h2>Resources</h2>
+    <p>
+      The following are some useful links to get you started with Solidity programming
+    </p>
+
+    <ul class="ui list">
+      <li><a href="https://solidity.readthedocs.io/en/latest/">Solidity</a> documentation</li>
+      <li><a href="http://remix.ethereum.org/">Remix</a> - online Solidity IDE</li>
+      <li><a href="https://www.withpragma.com/">Pragma</a> - a simple online Solidity editor and deployer</li>
+      <li><a href="https://truffleframework.com/">Truffle Framework</a> - a useful framework for developing locally</li>
+    </ul>
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+
+  </div>
+
+  <div class="ui inverted vertical footer segment">
+    <div class="ui center aligned container">
+      <div class="ui horizontal inverted small divided link list">
+        <a href="https://www.meetup.com/LA-Smart-Contract-Meetup/" class="item">Meetup</a>
+        <a href="http://lists.lasmartcontract.com/listinfo.cgi/lasmartcontract-lasmartcontract.com" class="item">Join Discussion</a>
+        <a class="item" href="https://github.com/lasmartcontract/lasmartcontract.github.io">Help Improve This Site!</a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
