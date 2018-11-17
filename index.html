@@ -30,6 +30,7 @@
   <link rel="stylesheet" type="text/css" href="/css/lasmartcontract.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js"></script>
   <script src="/css/components/transition.js"></script>
   <script src="/css/components/dropdown.js"></script>
   <script src="/css/components/visibility.js"></script>
@@ -57,9 +58,27 @@
       $('.main.menu  .ui.dropdown').dropdown({
         on: 'hover'
       });
+      retrieveTokenCount();
     })
   ;
-  </script>
+
+  var retrieveTokenCount = async() => {
+    if (window.ethereum) {
+      await window.ethereum.enable();
+      const web3 = new Web3(window.ethereum);
+      const accounts = await web3.eth.getAccounts();
+      const currentAccount = accounts[0];
+      console.log(currentAccount);
+      const lascTokenContract = new web3.eth.Contract(abi, "0xbe6eff551f7f08d7c699702c63f7a6f40fa6661c");
+      let currentBalance = await lascTokenContract.methods.balanceOf(currentAccount).call();
+      currentBalance = currentBalance / 10**18;
+      $(".tokenCount").text(currentBalance);
+    } else {
+      $(".tokenCount").text("unknown");
+    }
+  }
+
+</script>
 
   <style type="text/css">
 
@@ -73,15 +92,13 @@
     <p>A (new) community of smart contract engineers. <strong>Novices and experts welcome.</strong></p>
   </div>
 
-
   <div class="ui borderless main menu">
     <div class="ui text container">
       <div class="header item">
         <img class="logo" height="40" width="40" src="/imgs/lasc.png">
       </div>
-      <a href="https://www.meetup.com/LA-Smart-Contract-Meetup/" class="item">Meetup</a>
       <a href="http://lists.lasmartcontract.com/listinfo.cgi/lasmartcontract-lasmartcontract.com" class="item">Join Discussion</a>
-      <div class="item">Tokens - <span class="tokenCount">0</span></div>
+      <div class="item">Tokens: <span class="tokenCount">0</span></div>
       <!--for later...<a href="#" class="ui right floated dropdown item">
         Dropdown <i class="dropdown icon"></i>
         <div class="menu">
@@ -123,7 +140,7 @@
     <p>&nbsp;</p>
 
     <div class="ui segment">
-      <p>Your attendance token count is <span class="tokenCount">0</span>. Attend more meetups to earn more tokens!  </p>
+      <p>You have <span class="tokenCount">0</span> <strong>LASC-I</strong> tokens. Consider <a href="https://github.com/lasmartcontract/lasc-contracts">participating</a> to earn more tokens.</p>
     </div>
 
     <h2>Resources</h2>
@@ -132,13 +149,25 @@
     </p>
 
     <ul class="ui list">
-      <li><a href="https://solidity.readthedocs.io/en/latest/">Solidity</a> documentation</li>
+      <li><a href="https://solidity.readthedocs.io/en/laretrieveTokenCount
+/">Solidity</a> documentation</li>
       <li><a href="http://remix.ethereum.org/">Remix</a> - online Solidity IDE</li>
       <li><a href="https://www.withpragma.com/">Pragma</a> - a simple online Solidity editor and deployer</li>
       <li><a href="https://truffleframework.com/">Truffle Framework</a> - a useful framework for developing locally</li>
     </ul>
 
     <p>&nbsp;</p>
+
+    <div class="ui segment">
+      <h2>Coming Soon</h2>
+      <p>January 16, 2019 @ 7:00 pm</p>
+      <p>Phase 2 Culver City</p>
+      <p><strong>Solidity v5.0 is out! New feature deep dive</strong></p>
+      <p>The long awaited version 5.0 of Solidity, the most popular language for writing smart contracts on the Ethereum blockchain, has been released.</p>
+      <p>Let's meet up and explore the new features (code-focused: as few slides as possible, promise).</p>
+      <p><a class="ui button primary" href="https://www.meetup.com/LA-Smart-Contract-Meetup/events/256441472/">RSVP on Meetup</a></p>
+    </div>
+
     <p>&nbsp;</p>
 
   </div>
@@ -153,5 +182,9 @@
     </div>
   </div>
 </body>
+
+<script>
+var abi = JSON.parse('[{"constant":false,"inputs":[{"name":"account","type":"address"}],"name":"addMinter","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"spender","type":"address"},{"name":"value","type":"uint256"}],"name":"approve","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"value","type":"uint256"}],"name":"burn","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"from","type":"address"},{"name":"value","type":"uint256"}],"name":"burnFrom","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"spender","type":"address"},{"name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"spender","type":"address"},{"name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"to","type":"address"},{"name":"value","type":"uint256"}],"name":"mint","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"renounceMinter","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"to","type":"address"},{"name":"value","type":"uint256"}],"name":"transfer","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"from","type":"address"},{"name":"to","type":"address"},{"name":"value","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_name","type":"string"},{"name":"_symbol","type":"string"},{"name":"_decimals","type":"uint8"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"account","type":"address"}],"name":"MinterAdded","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"account","type":"address"}],"name":"MinterRemoved","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"to","type":"address"},{"indexed":false,"name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"owner","type":"address"},{"indexed":true,"name":"spender","type":"address"},{"indexed":false,"name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"constant":true,"inputs":[{"name":"owner","type":"address"},{"name":"spender","type":"address"}],"name":"allowance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"account","type":"address"}],"name":"isMinter","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}]');
+</script>
 
 </html>
